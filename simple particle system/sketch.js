@@ -1,27 +1,23 @@
-let p = [];
-
+let meteors = [] ;
+let tailDensity = 5;
+let p, px, py, t;
+let i =0;
 function setup(){
     createCanvas(windowWidth,windowHeight);
+    p  = new Particle(500,300);
+    p1 = new Particle(475,275);
+    p2 = new Particle(550,350);
+    p3 = new Particle(575,375);
+    p4 = new Particle(600,400);
+    p5 = new Particle(625,425);
     
 }
 
 function draw(){
     background(21,43,54);
-    
-    if(random(1)<0.5){
-    p.push(new Particle(windowWidth-400,350));
-    }
-    
-    for(let i=0; i<p.length; i++){
-        
-    if(p[i].fade()){
-        p.splice(i,1);
-    }
-        
-    p[i].update();
-    p[i].show();
-        
-    }
-    
+    p.headShow(25);
+    p1.headShow(16);
 }
+
+
 

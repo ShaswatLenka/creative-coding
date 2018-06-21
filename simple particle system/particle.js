@@ -3,27 +3,34 @@ class Particle{
     constructor(x,y){
         this.x = x;
         this.y = y;
-        this.pos = createVector(this.x, this.y);
-        this.vel = createVector(random(2),-2);
+        this.head = createVector(this.x, this.y);
+        this.tail = createVector(this.x, this.y);
+        this.tailVel = createVector(random(5),-5);
         this.alpha = 255;
+        this.fallVel = createVector(-0.5,0.5);
     }
     
     
     update(){
-        this.pos.add(this.vel);
+        this.head.add(this.fallVel);
+        this.tail.add(this.tailVel);
         this.alpha -= 5;
-        
     }
+    
     
     fade(){
         return this.alpha < 0 ;
     }
     
+    headShow(x){
+        stroke(21,45,54);
+        fill(255,14,0);
+        ellipse(this.head.x, this.head.y, x);
+    }
     
-    
-    show(){
-        stroke(255);
-        fill(255,this.alpha);
-        ellipse(this.pos.x, this.pos.y, 16);
+    tailShow(x){
+        stroke(21,45,54);
+        fill(255,14,0, this.alpha);
+        ellipse(this.tail.x, this.tail.y, x);
     }
 }
