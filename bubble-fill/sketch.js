@@ -1,12 +1,18 @@
 var circles = [];
+var img;
+function preload(){
+    img = loadImage("data/shaswat.jpg");
+}
 function setup(){
-    createCanvas(windowWidth, windowHeight);
-    circles.push(new Circle(random(windowWidth, windowHeight)));
+    createCanvas(560,747);
+    var density = displayDensity();
+    pixelDensity(1);
+    img.loadPixels();
 }
 
 function newCircle(){
-        var x = random(windowWidth);
-        var y = random(windowHeight);
+        var x = random(0,img.width);
+        var y = random(0,img.height);
         var valid = true;
         for(var i = 0; i<circles.length; i++){
             var d = dist(x,y, circles[i].x, circles[i].y);
@@ -16,16 +22,19 @@ function newCircle(){
             }
         }
     if(valid){
-        return new Circle(x,y);
+        var index = (int(x) + int(y)*img.width) * 4;
+        var r = img.pixels[index];
+        var g = img.pixels[index+1];
+        var b = img.pixels[index+2];
+        var col = color(r,g,b);
+        return new Circle(x,y,col);
     }else{
         return null;
     }
  }
 
  
-function draw(){
-    background(0);
-    
+function draw(){    
     c = newCircle();
     if(c != null){
         circles.push(c);

@@ -1,20 +1,21 @@
 class Circle {
-    constructor(x,y){
+    constructor(x,y,c){
         this.x = x;
         this.y = y;
-        this.r = 1;
+        this.r = 1.5;
+        this.color = c;
         this.growing = true;
     }
     
   show(){
-     stroke(255);
-     noFill();
-     ellipse(this.x,this.y, this.r*2, this.r*2);
+     fill(this.color);
+     noStroke();
+     ellipse(this.x,this.y, this.r, this.r);
  }
     
   grow(){
       if(this.growing){
-      this.r = this.r+1;
+      this.r = this.r+0.05;
       }
   }
     edges(){
