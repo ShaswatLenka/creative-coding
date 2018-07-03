@@ -15,7 +15,7 @@ class Circle {
     
   grow(){
       if(this.growing){
-      this.r = this.r+0.05;
+      this.r = this.r+0.2;
       }
   }
     edges(){
